@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+        <meta name="og:title" content="Haiku Generator">
+        <meta name="og:author" content="Joe Lollo">
+        <meta property="og:description"
+        content="A simple combinatorial generator of haikus in the traditional haiku forms.
+                 Feel free to copy and modify it." />
+  <!--
+  Sonnet Generator
+  copyright (c) 2020 Joe Lollo
+
+  Copying and distribution of this file, with or without modification, are
+  permitted in any medium without royalty provided the copyright notice and
+  this notice are preserved. This file is offered as-is, without any warranty.
+
+  Thank you to Amaranth Borsuk and Nick Montfort for inspiring me, I guess.
+  -->
+
+  <style>
+  body {
+   background: #444444;
+   color:#FFFFFF;
+   margin:32pt;
+   font-family:"Arial", "Arial", Arial, serif;
+   font-size:16pt;
+  }
+  a {
+   color: #618ddd;
+   text-decoration:none;
+  }
+  </style>
+
+  <script>
+  var lines = [], options =
+`
+Even with distance,:Zoom at home all day.:Can we go outside?:Global pandemic,
+The end feels painfully close.:Work. Or not. Does it matter?:Prehaps. Uncertain it is.:Humanity lying still.
+Never lose that hope.:Close to giving up.:Please maintain distance.:No dream to be found.:A new day will come.
+`.split('\n');
+  for (var line of options) {
+    lines.push(line.split(':'));
+  }
+
+  function pick(array) {
+      return array[Math.floor(Math.random() * array.length)];
+  }
+
+  function generate() {
+  	var sonnet = "";
+  	for (line of lines) {
+      sonnet += pick(line) + "<br>";
+    }
+  	poem.innerHTML = sonnet;
+  }
+  </script>
+  <title>COVID Haiku Generator</title>
+</head>
+
+<body onload="generate();">
+<div id="main" style="padding-top:18px">
+  <h1 style="margin-bottom:0;padding-bottom:0">COVID Haiku Generator</h1>
+  <h4 style="margin-top:0"><a href="https://nickm.com">Based on the work of Nick Montfort</a> &nbsp; November 14, 2020 &nbsp; by Joe Lollo</h4>
+    <div id="poem"><i>You need a recent browser to view this!</i></div>
+    <div style="font-size:12pt;margin-top:20pt"> <a href="javascript:location.reload()" style="background:#222;padding:3pt;font-weight:bold">Next…</a></div>
+</div>
+</body>
+</html>
